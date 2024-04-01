@@ -90,4 +90,11 @@ npx hardhat run scripts/zkevm/deploy.js --network zkEVM
 
 ## UI
 
-1. npm start
+1. Deploy the smart contract 
+2. After deployment replace `<DEPLOYED_ADDRESS>` at the top of `src/App.js`. 
+3. Make the ABI available from the build to your react app. Run the following from the root to make a copy of the ABI so your react app has access to it:
+```
+cp -R artifacts/contracts src/contracts
+```
+4. npm start
+
