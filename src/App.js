@@ -6,14 +6,14 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import "./App.css";
 const ethers = require("ethers")
-import BoxV2 from "./contracts/BoxV2.sol/BoxV2.json";
-const boxV2Address = "<DEPLOYED_ADDRESS>"
-console.log(boxV2Address, "BoxV2 ABI: ", BoxV2.abi);
+import BasicStorageV2 from "./contracts/BasicStorageV2.sol/BasicStorageV2.json";
+const basicStorageAddress = "0xa90623857652dAf863f45B184c1BF724A4c27aA8"
+console.log(basicStorageAddress, "BasicStorageV2 ABI: ", BasicStorageV2.abi);
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [count, setCount] = useState(0);
-  const [number, setNumber] = useState(undefined);
+  const [number, setNumber] = useState(0);
 
   useEffect(() => {
     const fetchCount = async () => {
@@ -28,8 +28,8 @@ function App() {
     if (typeof window.ethereum !== "undefined") {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const contract = new ethers.Contract(
-            boxV2Address,
-            BoxV2.abi,
+            basicStorageAddress,
+            BasicStorageV2.abi,
             provider
         );  
         try {
@@ -49,7 +49,7 @@ function App() {
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
         const signerResult = await signer;
-        const contractAction = new ethers.Contract(boxV2Address, BoxV2.abi, signerResult);
+        const contractAction = new ethers.Contract(basicStorageAddress, BasicStorageV2.abi, signerResult);
         const transaction = await contractAction.increment();
         setIsLoading(true);
         await transaction.wait();
@@ -65,7 +65,7 @@ function App() {
         await provider.send("eth_requestAccounts", []);
         const signer = provider.getSigner();
         const signerResult = await signer;
-        const contractAction = new ethers.Contract(boxV2Address, BoxV2.abi, signerResult);
+        const contractAction = new ethers.Contract(basicStorageAddress, BasicStorageV2.abi, signerResult);
         const transaction = await contractAction.store(number);
         setIsLoading(true);
         await transaction.wait();

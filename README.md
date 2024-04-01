@@ -23,13 +23,13 @@ npx hardhat test
 
 1. Run:
 ```
-npx hardhat run --network sepolia scripts/deploy_upgradeable_box.js
+npx hardhat run --network sepolia scripts/eth/deploy_upgradeable_basic_storage.js
 ```
 
-2. Update `upgrade_box.js` with the address from #1 where it says `<ADDRESS_HERE>`
+2. Update `scripts/eth/upgrade_basic_storage.js` with the address from #1 where it says `<ADDRESS_HERE>`
 3. Run:
 ```
-npx hardhat run --network sepolia scripts/upgrade_box.js
+npx hardhat run --network sepolia scripts/eth/upgrade_basic_storage.js
 ```
 
 ### Execute against Sepolia
@@ -41,19 +41,19 @@ npx hardhat console --network sepolia
 ```
 2. From *Deploying to Sepolia*, replace *<ADDRESS>* in the code below with the deployed address. Note that persisting any value in a smart contract via _store()_ or _storeOpenValue()_ may take up to 10 seconds.
 ```
-address = '<ADDRESS>'
-const BoxV2 = await ethers.getContractFactory('BoxV2');
-const box = await BoxV2.attach(address);
+address = '0x48209332d458224afD66431c9d42bf060aadc4ee'
+const BasicStorageV2 = await ethers.getContractFactory('BasicStorageV2');
+const basicStorage = await BasicStorageV2.attach(address);
 
-(await box.retrieve()).toString(); // should be 0
-(await box.store(100));
-(await box.retrieve()).toString(); // should be 100 
-(await box.increment())
-(await box.retrieve()).toString(); // should be 101 
+(await basicStorage.retrieve()).toString(); // should be 0
+(await basicStorage.store(100));
+(await basicStorage.retrieve()).toString(); // should be 100 
+(await basicStorage.increment())
+(await basicStorage.retrieve()).toString(); // should be 101 
 
-(await box.retrieveOpen()).toString(); // should be 0
-(await box.storeOpenValue(200));
-(await box.retrieveOpen()).toString(); // should be 200
+(await basicStorage.retrieveOpen()).toString(); // should be 0
+(await basicStorage.storeOpenValue(200));
+(await basicStorage.retrieveOpen()).toString(); // should be 200
 ```
 
 ### Running locally only
@@ -67,10 +67,10 @@ Then, in another window do the following:
 
 1. Run:
 ```
-npx hardhat run --network localhost scripts/deploy_upgradeable_box.js
+npx hardhat run --network localhost scripts/eth/deploy_upgradeable_basic_storage.js
 ```
 
-2. Update `upgrade_box.js` with the address from #1 where it says <ADDRESS_HERE>
+2. Update `scripts/eth/upgrade_basic_storage.js` with the address from #1 where it says `<ADDRESS_HERE>`
 3. Run:
 ```
 npx hardhat run --network localhost scripts/deploy_upgradeable_box.js

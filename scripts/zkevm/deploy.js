@@ -1,27 +1,20 @@
 const hre = require("hardhat");
 
 async function main() {
-    // const Box = await ethers.getContractFactory('Box');
-    // const box = await Box.deploy();
-    // await box.waitForDeployment();
-    // console.log('Box deployed to:', box.target);
-    // console.log(
-    //     `Counter contract deployed to https://testnet-zkevm.polygonscan.com/address/${box.target}`
-    // );
+    const BasicStorage = await ethers.getContractFactory('BasicStorage');
+    console.log('Deploying First Version of BasicStorage...');
+    const basicStorage = await upgrades.deployProxy(BasicStorage, { initializer: 'initialize' });
+    await basicStorage.waitForDeployment();
+    console.log('BasicStorage deployed to:', basicStorage.target);
 
-    const Box = await ethers.getContractFactory('Box');
-    console.log('Deploying First Version of Box...');
-    const box = await upgrades.deployProxy(Box, { initializer: 'initialize' });
-    await box.waitForDeployment();
-    console.log('Box deployed to:', box.target);
-
-    console.log('Upgrading to Box V2...');
-    const BoxV2 = await ethers.getContractFactory('BoxV2');
-    await upgrades.upgradeProxy(box.target, BoxV2);
-    console.log('Box upgraded to', box.target);
+    const address = basicStorage.target
+    console.log('Upgrading to BasicStorageV2...');
+    const BasicStorageV2 = await ethers.getContractFactory('BasicStorageV2');
+    await upgrades.upgradeProxy(address, BasicStorageV2);
+    console.log('BasicStorage upgraded to', address);
 
     console.log(
-        `Shortcut link: https://testnet-zkevm.polygonscan.com/address/${box.target}`
+        `Shortcut link: https://testnet-zkevm.polygonscan.com/address/${address}`
     );
 }
 
