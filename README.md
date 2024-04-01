@@ -1,6 +1,17 @@
-# BasicUpgradableEthSmartContract
+# Basic Upgradable Eth SmartContract
 
-[!Image of the UI running](https://github.com/henryksarat/BasicUpgradableEthSmartContract/blob/main/images/UI_screenshot.png)
+This is a basic repo to get anyone started with a dApp. This repo has the following features:
+
+* Two basic Ethereum smart contracts called `BasicStorage` and `BasicStorageV2`
+* Scripts to deploy `BasicStorage` and upgrade this smart contract to `BasicStorageV2`
+* Upgrading is done with Hardhat using the Transparent Proxy Pattern
+* Smart contract have a testbed of unit tests
+* Functions in the smart contract are reserved by the `onlyOwner` modifier so only the deployer can execute them
+* Ability to deploy and upgrade on Sepolia and zkEVM Testnet
+* Basic React app that reads the `BasicStorageV2` smart contract
+* Basic React unit test
+
+![Image of the UI running](https://github.com/henryksarat/BasicUpgradableEthSmartContract/blob/main/images/UI_screenshot.png)
 
 ## Getting Started
 
