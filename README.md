@@ -1,5 +1,7 @@
 # BasicUpgradableEthSmartContract
 
+[!images/UI_screenshot.png]
+
 ## Getting Started
 
 *Basic setup*
@@ -10,6 +12,7 @@ npm install --save-dev hardhat
 npx hardhat
 npx hardhat compile
 npx hardhat test
+npm test
 ```
 
 *Update secres.json*
@@ -73,7 +76,12 @@ npx hardhat run --network localhost scripts/eth/deploy_upgradeable_basic_storage
 2. Update `scripts/eth/upgrade_basic_storage.js` with the address from #1 where it says `<ADDRESS_HERE>`
 3. Run:
 ```
-npx hardhat run --network localhost scripts/deploy_upgradeable_box.js
+npx hardhat run --network localhost scripts/eth/upgrade_basic_storage.js
+```
+4. To execute commands against your local blockchain, similar to the section *Execute against Sepolia*, run the following :
+
+```
+npx hardhat console --network sepolia
 ```
 
 ## zkEVM testnet
@@ -97,4 +105,11 @@ npx hardhat run scripts/zkevm/deploy.js --network zkEVM
 cp -R artifacts/contracts src/contracts
 ```
 4. npm start
+
+## Resources
+
+I used the following resources to pull together this repo:
+* https://docs.openzeppelin.com/learn/developing-smart-contracts
+* https://docs.polygon.technology/zkEVM/how-to/using-hardhat/
+* https://refine.dev/blog/material-ui-card/#material-ui-card-interactions
 
