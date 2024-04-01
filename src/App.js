@@ -163,6 +163,15 @@ function App() {
                 {isLoading ? "loading..." : "Store Value"}
               </Button>
               </div>
+              <p></p>
+              <div>
+                <Button 
+                  onClick={incrementCounter} variant="outlined"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "loading..." : "Increment Stored Value by +1"}
+              </Button>
+              </div>
               <p>Value Stored: {count}</p>
             </CardContent>
           </Card>
@@ -204,16 +213,6 @@ function App() {
               </Button>
               <p></p>
               <p>Open Value Stored: {retreivedOpenValue}</p>
-              <p></p>
-              <div>
-                <Button 
-                  onClick={incrementCounter} variant="outlined"
-                  disabled={isLoading}
-                >
-                  {isLoading ? "loading..." : "Increment Stored Value by +1"}
-              </Button>
-              </div>
-              <p>Value Stored: {count}</p>
             </CardContent>
           </Card>
           </Grid>
