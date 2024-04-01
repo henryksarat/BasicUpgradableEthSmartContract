@@ -1,6 +1,6 @@
 # BasicUpgradableEthSmartContract
 
-[!Image of the UI running](images/UI_screenshot.png)
+[!Image of the UI running](https://github.com/henryksarat/BasicUpgradableEthSmartContract/blob/main/images/UI_screenshot.png)
 
 ## Getting Started
 
