@@ -1,6 +1,6 @@
 # BasicUpgradableEthSmartContract
 
-### Getting Started
+## Getting Started
 
 *Basic setup*
 
@@ -15,6 +15,9 @@ npx hardhat test
 *Update secres.json*
 * Replace `<MNEMONIC>` with the one from your wallet that has testnet tokens
 * Replace `<API_KEY>` with your alechemy.com API key for Sepolia
+* Replace `<ACCOUNT_PRIVATE_KEY>` with your private key for your wallet
+
+## Eth Testnet Sepolia
 
 ### Deploying to Sepolia
 
@@ -73,3 +76,14 @@ npx hardhat run --network localhost scripts/deploy_upgradeable_box.js
 npx hardhat run --network localhost scripts/deploy_upgradeable_box.js
 ```
 
+## zkEVM testnet
+
+### Deploying to zkEVM testnet
+
+1. Make sure that you have enough Eth on zkEVM testnet.
+2. Replace `<ACCOUNT_PRIVATE_KEY>` in `secrets.json` with the private key for your wallet. Note that you can just use `<MNEMONIC>` just like with the Eth scripts, but for variety and as an example I decided to use `<ACCOUNT_PRIVATE_KEY>`. You would only need to update `hardhat.config.js` for the zkEVM network to use `mnemonic`.
+3. Run
+
+```
+npx hardhat run scripts/zkevm/deploy.js --network zkEVM
+```
