@@ -87,3 +87,7 @@ npx hardhat run --network localhost scripts/deploy_upgradeable_box.js
 ```
 npx hardhat run scripts/zkevm/deploy.js --network zkEVM
 ```
+
+## UI
+
+1. npm start
